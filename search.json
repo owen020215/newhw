@@ -16,9 +16,9 @@
   {
     "objectID": "posts/post-with-code/index.html",
     "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
+    "title": "Hw0",
     "section": "",
-    "text": "This is a post with executable code.\n\nimport pandas as pd\nurl = \"https://raw.githubusercontent.com/pic16b-ucla/24W/main/datasets/palmer_penguins.csv\"\npenguins = pd.read_csv(url)\n\n\n# In[6]:\n\n\npenguins.head\n\n\n# In[8]:\n\n\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n# Assuming penguins dataset is already loaded as shown in your output\n# penguins = sns.load_dataset(\"penguins\")\n\n# Construct a pairplot\nsns.pairplot(penguins, hue=\"studyName\", palette=\"Set2\", diag_kind=\"kde\", markers=[\"o\", \"s\", \"D\"])\n\n# Enhance the plot\nplt.suptitle(\"Pairplot of Palmer Penguins Dataset\", size=16)\nplt.subplots_adjust(top=0.9)  # Adjust title position\n\nplt.show()\n\n/Users/owensun/anaconda3/lib/python3.11/site-packages/seaborn/axisgrid.py:118: UserWarning:\n\nThe figure layout has changed to tight"
+    "text": "This is how you\n\nimport pandas as pd\nurl = \"https://raw.githubusercontent.com/pic16b-ucla/24W/main/datasets/palmer_penguins.csv\"\npenguins = pd.read_csv(url)\n\n\n# In[6]:\n\n\npenguins.head\n\n\n# In[8]:\n\n\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n# Assuming penguins dataset is already loaded as shown in your output\n# penguins = sns.load_dataset(\"penguins\")\n\n# Construct a pairplot\nsns.pairplot(penguins, hue=\"studyName\", palette=\"Set2\", diag_kind=\"kde\", markers=[\"o\", \"s\", \"D\"])\n\n# Enhance the plot\nplt.suptitle(\"Pairplot of Palmer Penguins Dataset\", size=16)\nplt.subplots_adjust(top=0.9)  # Adjust title position\n\nplt.show()\n\n/Users/owensun/anaconda3/lib/python3.11/site-packages/seaborn/axisgrid.py:118: UserWarning:\n\nThe figure layout has changed to tight"
   },
   {
     "objectID": "posts/welcome/index.html",
@@ -32,6 +32,6 @@
     "href": "index.html",
     "title": "newhw0",
     "section": "",
-    "text": "Post With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nJan 24, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nJan 24, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
+    "text": "Hw0\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nJan 24, 2024\n\n\nOwen Sun\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\n\n\n\nnews\n\n\ncode\n\n\nanalysis\n\n\n\n\n\n\n\n\n\nJan 24, 2024\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\nJan 21, 2024\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   }
 ]
