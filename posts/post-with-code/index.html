@@ -59,7 +59,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -102,6 +102,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -190,38 +193,191 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p><strong>#Construct an interesting data visualization of the Palmer Penguins data set.</strong></p>
-<p>This is how you make a pairplot for panguins</p>
-<p>url:<a href="https://owen020215.github.io/newhw/posts/post-with-code/" class="uri">https://owen020215.github.io/newhw/posts/post-with-code/</a></p>
-<div id="7b689e15" class="cell" data-execution_count="1">
+<section id="data-visualization-tutorial-exploring-the-palmer-penguins-dataset" class="level1">
+<h1><strong>Data Visualization Tutorial: Exploring the Palmer Penguins Dataset</strong></h1>
+</section>
+<section id="urlhttpsowen020215.github.ionewhwpostspost-with-code" class="level1">
+<h1>url:<a href="https://owen020215.github.io/newhw/posts/post-with-code/" class="uri">https://owen020215.github.io/newhw/posts/post-with-code/</a></h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction"><strong>Introduction</strong></h2>
+<p>In this tutorial, we will explore the Palmer Penguins dataset, a well-known dataset in the data science community, often used for data exploration and visualization. We’ll create a pairplot to visualize the relationships between different variables in the dataset.</p>
+</section>
+<section id="prerequisites" class="level2">
+<h2 class="anchored" data-anchor-id="prerequisites"><strong>Prerequisites</strong></h2>
+<ul>
+<li><p>Python installed on your machine.</p></li>
+<li><p>Basic understanding of Python programming.</p></li>
+<li><p>Familiarity with pandas, seaborn, and matplotlib libraries.</p></li>
+</ul>
+</section>
+<section id="step-1-loading-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="step-1-loading-the-dataset"><strong>Step 1: Loading the Dataset</strong></h2>
+<p>First, we need to load the dataset. We will use pandas, a powerful Python library for data manipulation, to load the dataset from a URL.</p>
+<div id="a950486e" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/pic16b-ucla/24W/main/datasets/palmer_penguins.csv"</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> pd.read_csv(url)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># URL of the Palmer Penguins dataset</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/pic16b-ucla/24W/main/datasets/palmer_penguins.csv"</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># In[6]:</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>penguins.head</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># In[8]:</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Assuming penguins dataset is already loaded as shown in your output</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># penguins = sns.load_dataset("penguins")</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct a pairplot</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>sns.pairplot(penguins, hue<span class="op">=</span><span class="st">"studyName"</span>, palette<span class="op">=</span><span class="st">"Set2"</span>, diag_kind<span class="op">=</span><span class="st">"kde"</span>, markers<span class="op">=</span>[<span class="st">"o"</span>, <span class="st">"s"</span>, <span class="st">"D"</span>])</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Enhance the plot</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"Pairplot of Palmer Penguins Dataset"</span>, size<span class="op">=</span><span class="dv">16</span>)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>plt.subplots_adjust(top<span class="op">=</span><span class="fl">0.9</span>)  <span class="co"># Adjust title position</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the dataset</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>penguins <span class="op">=</span> pd.read_csv(url)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-2-previewing-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="step-2-previewing-the-dataset"><strong>Step 2: Previewing the Dataset</strong></h2>
+<p>It’s always a good practice to preview the data before proceeding with any analysis. This helps to understand the structure of the data.</p>
+<div id="0dfe6e0c" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>penguins.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">studyName</th>
+<th data-quarto-table-cell-role="th">Sample Number</th>
+<th data-quarto-table-cell-role="th">Species</th>
+<th data-quarto-table-cell-role="th">Region</th>
+<th data-quarto-table-cell-role="th">Island</th>
+<th data-quarto-table-cell-role="th">Stage</th>
+<th data-quarto-table-cell-role="th">Individual ID</th>
+<th data-quarto-table-cell-role="th">Clutch Completion</th>
+<th data-quarto-table-cell-role="th">Date Egg</th>
+<th data-quarto-table-cell-role="th">Culmen Length (mm)</th>
+<th data-quarto-table-cell-role="th">Culmen Depth (mm)</th>
+<th data-quarto-table-cell-role="th">Flipper Length (mm)</th>
+<th data-quarto-table-cell-role="th">Body Mass (g)</th>
+<th data-quarto-table-cell-role="th">Sex</th>
+<th data-quarto-table-cell-role="th">Delta 15 N (o/oo)</th>
+<th data-quarto-table-cell-role="th">Delta 13 C (o/oo)</th>
+<th data-quarto-table-cell-role="th">Comments</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>PAL0708</td>
+<td>1</td>
+<td>Adelie Penguin (Pygoscelis adeliae)</td>
+<td>Anvers</td>
+<td>Torgersen</td>
+<td>Adult, 1 Egg Stage</td>
+<td>N1A1</td>
+<td>Yes</td>
+<td>11/11/07</td>
+<td>39.1</td>
+<td>18.7</td>
+<td>181.0</td>
+<td>3750.0</td>
+<td>MALE</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Not enough blood for isotopes.</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>PAL0708</td>
+<td>2</td>
+<td>Adelie Penguin (Pygoscelis adeliae)</td>
+<td>Anvers</td>
+<td>Torgersen</td>
+<td>Adult, 1 Egg Stage</td>
+<td>N1A2</td>
+<td>Yes</td>
+<td>11/11/07</td>
+<td>39.5</td>
+<td>17.4</td>
+<td>186.0</td>
+<td>3800.0</td>
+<td>FEMALE</td>
+<td>8.94956</td>
+<td>-24.69454</td>
+<td>NaN</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>PAL0708</td>
+<td>3</td>
+<td>Adelie Penguin (Pygoscelis adeliae)</td>
+<td>Anvers</td>
+<td>Torgersen</td>
+<td>Adult, 1 Egg Stage</td>
+<td>N2A1</td>
+<td>Yes</td>
+<td>11/16/07</td>
+<td>40.3</td>
+<td>18.0</td>
+<td>195.0</td>
+<td>3250.0</td>
+<td>FEMALE</td>
+<td>8.36821</td>
+<td>-25.33302</td>
+<td>NaN</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>PAL0708</td>
+<td>4</td>
+<td>Adelie Penguin (Pygoscelis adeliae)</td>
+<td>Anvers</td>
+<td>Torgersen</td>
+<td>Adult, 1 Egg Stage</td>
+<td>N2A2</td>
+<td>Yes</td>
+<td>11/16/07</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>Adult not sampled.</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>PAL0708</td>
+<td>5</td>
+<td>Adelie Penguin (Pygoscelis adeliae)</td>
+<td>Anvers</td>
+<td>Torgersen</td>
+<td>Adult, 1 Egg Stage</td>
+<td>N3A1</td>
+<td>Yes</td>
+<td>11/16/07</td>
+<td>36.7</td>
+<td>19.3</td>
+<td>193.0</td>
+<td>3450.0</td>
+<td>FEMALE</td>
+<td>8.76651</td>
+<td>-25.32426</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The <strong><code>head()</code></strong> function displays the first five rows of the dataset by default, providing a glimpse into the data we are working with.</p>
+</section>
+<section id="step-3-importing-visualization-libraries" class="level2">
+<h2 class="anchored" data-anchor-id="step-3-importing-visualization-libraries"><strong>Step 3: Importing Visualization Libraries</strong></h2>
+<p>We will use seaborn and matplotlib for visualization. Seaborn is a Python data visualization library based on matplotlib that provides a high-level interface for drawing attractive and informative statistical graphics.</p>
+<div id="b33b6843" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="step-4-constructing-a-pairplot" class="level2">
+<h2 class="anchored" data-anchor-id="step-4-constructing-a-pairplot"><strong>Step 4: Constructing a Pairplot</strong></h2>
+<p>A pairplot allows us to see both distribution of single variables and relationships between two variables. We will create a pairplot using seaborn.</p>
+<div id="72a5145f" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Construct a pairplot</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>sns.pairplot(penguins, hue<span class="op">=</span><span class="st">"studyName"</span>, palette<span class="op">=</span><span class="st">"Set2"</span>, diag_kind<span class="op">=</span><span class="st">"kde"</span>, markers<span class="op">=</span>[<span class="st">"o"</span>, <span class="st">"s"</span>, <span class="st">"D"</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/Users/owensun/anaconda3/lib/python3.11/site-packages/seaborn/axisgrid.py:118: UserWarning:
 
@@ -231,13 +387,43 @@ The figure layout has changed to tight
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="index_files/figure-html/cell-2-output-2.png" width="1773" height="1640" class="figure-img"></p>
+<p><img src="index_files/figure-html/cell-5-output-2.png" width="1780" height="1650" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
+<p>In this pairplot:</p>
+<ul>
+<li><p><strong><code>hue="studyName"</code></strong>: This parameter will color the points in the plot according to the ‘studyName’ column, allowing us to easily differentiate data points from different studies.</p></li>
+<li><p><strong><code>palette="Set2"</code></strong>: This sets the color palette for differentiating the hue levels.</p></li>
+<li><p><strong><code>diag_kind="kde"</code></strong>: This changes the diagonal plots to Kernel Density Estimation plots, which provide a smoother estimate of the distribution of a variable.</p></li>
+<li><p><strong><code>markers=["o", "s", "D"]</code></strong>: Different markers are used for different hue levels, enhancing the visual distinction between them.</p></li>
+</ul>
+</section>
+<section id="step-5-enhancing-the-plot" class="level2">
+<h2 class="anchored" data-anchor-id="step-5-enhancing-the-plot"><strong>Step 5: Enhancing the Plot</strong></h2>
+<p>We will use matplotlib to enhance the plot, such as setting a title and adjusting layout.</p>
+<div id="ade173ac" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Enhance the plot</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>plt.suptitle(<span class="st">"Pairplot of Palmer Penguins Dataset"</span>, size<span class="op">=</span><span class="dv">16</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>plt.subplots_adjust(top<span class="op">=</span><span class="fl">0.9</span>)  <span class="co"># Adjust title position</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>&lt;Figure size 672x480 with 0 Axes&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="step-6-displaying-the-plot" class="level2">
+<h2 class="anchored" data-anchor-id="step-6-displaying-the-plot"><strong>Step 6: Displaying the Plot</strong></h2>
+<p>Finally, we display the plot.</p>
+<div id="0ef3bc4b" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Conclusion</strong></p>
+<p>Congratulations! You have created a comprehensive pairplot of the Palmer Penguins dataset. This plot provides insights into the relationships between various measurements in the dataset and how they vary across different studies. Visualization is a powerful tool in data analysis, and seaborn along with matplotlib makes it convenient and effective.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

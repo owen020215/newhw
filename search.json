@@ -14,11 +14,60 @@
     "text": "This is a post with executable code.\n\nimport pandas as pd\nurl = \"https://raw.githubusercontent.com/pic16b-ucla/24W/main/datasets/palmer_penguins.csv\"\npenguins = pd.read_csv(url)\n\n\n# In[6]:\n\n\n#penguins.head\n\n\n# In[8]:\n\n\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n# Assuming penguins dataset is already loaded as shown in your output\n# penguins = sns.load_dataset(\"penguins\")\n\n# Construct a pairplot\nsns.pairplot(penguins, hue=\"studyName\", palette=\"Set2\", diag_kind=\"kde\", markers=[\"o\", \"s\", \"D\"])\n\n# Enhance the plot\nplt.suptitle(\"Pairplot of Palmer Penguins Dataset\", size=16)\nplt.subplots_adjust(top=0.9)  # Adjust title position\n\nplt.show()\n\n/Users/owensun/anaconda3/lib/python3.11/site-packages/seaborn/axisgrid.py:118: UserWarning:\n\nThe figure layout has changed to tight"
   },
   {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
+    "objectID": "posts/post-with-code/index.html#introduction",
+    "href": "posts/post-with-code/index.html#introduction",
     "title": "Hw0",
-    "section": "",
-    "text": "#Construct an interesting data visualization of the Palmer Penguins data set.\nThis is how you make a pairplot for panguins\nurl:https://owen020215.github.io/newhw/posts/post-with-code/\n\nimport pandas as pd\nurl = \"https://raw.githubusercontent.com/pic16b-ucla/24W/main/datasets/palmer_penguins.csv\"\npenguins = pd.read_csv(url)\n\n\n# In[6]:\n\n\npenguins.head\n\n\n# In[8]:\n\n\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n# Assuming penguins dataset is already loaded as shown in your output\n# penguins = sns.load_dataset(\"penguins\")\n\n# Construct a pairplot\nsns.pairplot(penguins, hue=\"studyName\", palette=\"Set2\", diag_kind=\"kde\", markers=[\"o\", \"s\", \"D\"])\n\n# Enhance the plot\nplt.suptitle(\"Pairplot of Palmer Penguins Dataset\", size=16)\nplt.subplots_adjust(top=0.9)  # Adjust title position\n\nplt.show()\n\n/Users/owensun/anaconda3/lib/python3.11/site-packages/seaborn/axisgrid.py:118: UserWarning:\n\nThe figure layout has changed to tight"
+    "section": "Introduction",
+    "text": "Introduction\nIn this tutorial, we will explore the Palmer Penguins dataset, a well-known dataset in the data science community, often used for data exploration and visualization. We’ll create a pairplot to visualize the relationships between different variables in the dataset."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#prerequisites",
+    "href": "posts/post-with-code/index.html#prerequisites",
+    "title": "Hw0",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nPython installed on your machine.\nBasic understanding of Python programming.\nFamiliarity with pandas, seaborn, and matplotlib libraries."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#step-1-loading-the-dataset",
+    "href": "posts/post-with-code/index.html#step-1-loading-the-dataset",
+    "title": "Hw0",
+    "section": "Step 1: Loading the Dataset",
+    "text": "Step 1: Loading the Dataset\nFirst, we need to load the dataset. We will use pandas, a powerful Python library for data manipulation, to load the dataset from a URL.\n\nimport pandas as pd\n\n# URL of the Palmer Penguins dataset\nurl = \"https://raw.githubusercontent.com/pic16b-ucla/24W/main/datasets/palmer_penguins.csv\"\n\n# Load the dataset\npenguins = pd.read_csv(url)"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#step-2-previewing-the-dataset",
+    "href": "posts/post-with-code/index.html#step-2-previewing-the-dataset",
+    "title": "Hw0",
+    "section": "Step 2: Previewing the Dataset",
+    "text": "Step 2: Previewing the Dataset\nIt’s always a good practice to preview the data before proceeding with any analysis. This helps to understand the structure of the data.\n\npenguins.head()\n\n\n\n\n\n\n\n\nstudyName\nSample Number\nSpecies\nRegion\nIsland\nStage\nIndividual ID\nClutch Completion\nDate Egg\nCulmen Length (mm)\nCulmen Depth (mm)\nFlipper Length (mm)\nBody Mass (g)\nSex\nDelta 15 N (o/oo)\nDelta 13 C (o/oo)\nComments\n\n\n\n\n0\nPAL0708\n1\nAdelie Penguin (Pygoscelis adeliae)\nAnvers\nTorgersen\nAdult, 1 Egg Stage\nN1A1\nYes\n11/11/07\n39.1\n18.7\n181.0\n3750.0\nMALE\nNaN\nNaN\nNot enough blood for isotopes.\n\n\n1\nPAL0708\n2\nAdelie Penguin (Pygoscelis adeliae)\nAnvers\nTorgersen\nAdult, 1 Egg Stage\nN1A2\nYes\n11/11/07\n39.5\n17.4\n186.0\n3800.0\nFEMALE\n8.94956\n-24.69454\nNaN\n\n\n2\nPAL0708\n3\nAdelie Penguin (Pygoscelis adeliae)\nAnvers\nTorgersen\nAdult, 1 Egg Stage\nN2A1\nYes\n11/16/07\n40.3\n18.0\n195.0\n3250.0\nFEMALE\n8.36821\n-25.33302\nNaN\n\n\n3\nPAL0708\n4\nAdelie Penguin (Pygoscelis adeliae)\nAnvers\nTorgersen\nAdult, 1 Egg Stage\nN2A2\nYes\n11/16/07\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nNaN\nAdult not sampled.\n\n\n4\nPAL0708\n5\nAdelie Penguin (Pygoscelis adeliae)\nAnvers\nTorgersen\nAdult, 1 Egg Stage\nN3A1\nYes\n11/16/07\n36.7\n19.3\n193.0\n3450.0\nFEMALE\n8.76651\n-25.32426\nNaN\n\n\n\n\n\n\n\nThe head() function displays the first five rows of the dataset by default, providing a glimpse into the data we are working with."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#step-3-importing-visualization-libraries",
+    "href": "posts/post-with-code/index.html#step-3-importing-visualization-libraries",
+    "title": "Hw0",
+    "section": "Step 3: Importing Visualization Libraries",
+    "text": "Step 3: Importing Visualization Libraries\nWe will use seaborn and matplotlib for visualization. Seaborn is a Python data visualization library based on matplotlib that provides a high-level interface for drawing attractive and informative statistical graphics.\n\nimport seaborn as sns\nimport matplotlib.pyplot as plt"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#step-4-constructing-a-pairplot",
+    "href": "posts/post-with-code/index.html#step-4-constructing-a-pairplot",
+    "title": "Hw0",
+    "section": "Step 4: Constructing a Pairplot",
+    "text": "Step 4: Constructing a Pairplot\nA pairplot allows us to see both distribution of single variables and relationships between two variables. We will create a pairplot using seaborn.\n\n# Construct a pairplot\nsns.pairplot(penguins, hue=\"studyName\", palette=\"Set2\", diag_kind=\"kde\", markers=[\"o\", \"s\", \"D\"])\n\n/Users/owensun/anaconda3/lib/python3.11/site-packages/seaborn/axisgrid.py:118: UserWarning:\n\nThe figure layout has changed to tight\n\n\n\n\n\n\n\n\n\n\nIn this pairplot:\n\nhue=\"studyName\": This parameter will color the points in the plot according to the ‘studyName’ column, allowing us to easily differentiate data points from different studies.\npalette=\"Set2\": This sets the color palette for differentiating the hue levels.\ndiag_kind=\"kde\": This changes the diagonal plots to Kernel Density Estimation plots, which provide a smoother estimate of the distribution of a variable.\nmarkers=[\"o\", \"s\", \"D\"]: Different markers are used for different hue levels, enhancing the visual distinction between them."
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#step-5-enhancing-the-plot",
+    "href": "posts/post-with-code/index.html#step-5-enhancing-the-plot",
+    "title": "Hw0",
+    "section": "Step 5: Enhancing the Plot",
+    "text": "Step 5: Enhancing the Plot\nWe will use matplotlib to enhance the plot, such as setting a title and adjusting layout.\n\n# Enhance the plot\nplt.suptitle(\"Pairplot of Palmer Penguins Dataset\", size=16)\nplt.subplots_adjust(top=0.9)  # Adjust title position\n\n&lt;Figure size 672x480 with 0 Axes&gt;"
+  },
+  {
+    "objectID": "posts/post-with-code/index.html#step-6-displaying-the-plot",
+    "href": "posts/post-with-code/index.html#step-6-displaying-the-plot",
+    "title": "Hw0",
+    "section": "Step 6: Displaying the Plot",
+    "text": "Step 6: Displaying the Plot\nFinally, we display the plot.\n\nplt.show()\n\nConclusion\nCongratulations! You have created a comprehensive pairplot of the Palmer Penguins dataset. This plot provides insights into the relationships between various measurements in the dataset and how they vary across different studies. Visualization is a powerful tool in data analysis, and seaborn along with matplotlib makes it convenient and effective."
   },
   {
     "objectID": "posts/welcome/index.html",
